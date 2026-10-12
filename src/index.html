@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Astra · There’s a world beyond.</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="cosmos" aria-hidden="true"><div class="planet-wrap"><img draggable="false" id="space" src="assets/astra-cloud-planet-v5.png" alt=""><canvas id="planet"></canvas></div><div id="stars"></div><div class="shade"></div></div>
+  <header class="titlebar"><div class="window-actions"><button id="minimize" aria-label="Minimize"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button><button id="maximize" aria-label="Maximize window" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="1"/></svg></button><button id="close" aria-label="Close Astra"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div></header>
+  <main>
+    <section class="login" aria-labelledby="heading">
+      <h1 id="heading" aria-label="Astra"><span class="logo-letter"><img draggable="false" class="emblem" src="assets/astra-logo-selected.png" alt="" width="76" height="76"></span><span class="wordmark-text" aria-hidden="true">STRA</span></h1>
+      <p id="intro" class="slogan">There’s a world beyond.</p>
+      <div class="sign-in-area">
+        <button class="primary" id="sign-in"><svg class="microsoft" viewBox="0 0 20 20" aria-hidden="true"><path d="M0 0h9v9H0zm11 0h9v9h-9zM0 11h9v9H0zm11 0h9v9h-9z" fill="currentColor"/></svg><span id="button-label">Continue with Microsoft</span><svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></button>
+        <div id="status" role="status" aria-live="polite"></div>
+        <button id="cancel" class="text-button" hidden>Cancel sign-in</button>
+        <button id="sign-out" class="text-button" hidden>Sign out</button>
+      </div>
+    </section>
+  </main>
+
+  <section id="hub" hidden aria-label="Astra hub">
+    <aside class="friends-sidebar">
+      <div class="identity"><img draggable="false" class="sidebar-logo" src="assets/astra-logo-selected.png" alt="Astra"><button id="my-profile" aria-label="Your profile"><canvas id="self-avatar" width="80" height="90"></canvas></button><button id="presence-button" class="presence online" aria-label="Change your status" aria-expanded="false"></button></div>
+      <div id="presence-menu" class="popover" hidden><button data-presence="online"><i class="presence online"></i>Online</button><button data-presence="idle"><i class="presence idle"></i>Idle</button><button data-presence="dnd"><i class="presence dnd"></i>Do Not Disturb</button><button data-presence="offline"><i class="presence offline"></i>Offline</button><small>Saved on this device</small></div>
+      <div class="friends-heading"><span>FRIENDS</span><button id="add-friend" aria-label="Add friend">+</button></div>
+      <div id="friends-list"></div><p id="friends-empty">A little quiet here.<br>Add someone to your list.</p>
+      <p class="local-label">LOCAL PREVIEW</p>
+      <button id="sidebar-settings" class="sidebar-bottom">Settings <span>↗</span></button>
+    </aside>
+    <div class="hub-content">
+      <nav class="orbit-nav" aria-label="Hub navigation"><button data-tab="home" aria-current="page"><span>01</span>Play</button><i></i><button data-tab="account"><span>02</span>Profile</button><i></i><button data-tab="settings"><span>03</span>Settings</button></nav>
+      <section id="tab-home">
+        <div class="hub-greeting"><span id="player-name"></span><span>YOUR NEXT WORLD AWAITS</span></div>
+        <div id="version-banner" class="version-banner"><div class="banner-orbit"></div><p class="eyebrow" id="banner-version">MINECRAFT JAVA · 1.21.1</p><h2 id="banner-title">Astra Vanilla</h2><p class="banner-tagline">Make this world yours.</p><div class="banner-bottom"><label>GAME VERSION<select id="game-version"><option>1.21.1</option><option>1.20.1</option><option>1.19.4</option><option>1.18.2</option><option>1.16.5</option><option>1.12.2</option><option>1.8.9</option></select></label><button id="launch-game" class="primary">Launch <span>↗</span></button></div></div>
+        <div class="edition-heading"><span>CHOOSE YOUR EXPERIENCE</span><span id="edition-caption">Astra Vanilla</span></div><div id="edition-options" class="edition-options" aria-label="Minecraft type"></div>
+        <p id="launch-status" class="quiet-note" role="status">Choose a version and loader. Game installation is not available in this preview.</p>
+      </section>
+      <section id="tab-account" hidden><article class="profile-card"><div id="profile-color" class="profile-color"><canvas id="profile-avatar" width="240" height="250"></canvas></div><div class="profile-details"><div class="profile-name-row"><h2 id="account-name"></h2><span class="astra-badge">A · ASTRA</span></div><p class="quiet-note">Your profile · saved on this device</p><form id="profile-form"><label>ABOUT YOU<textarea id="profile-bio" maxlength="240" placeholder="A few words about your world." rows="3"></textarea></label><label>FAVORITE SERVER<input id="favorite-server" maxlength="100" placeholder="A server you call home"></label><button class="secondary" type="submit">Save profile</button><span id="profile-saved" role="status"></span></form><button id="hub-sign-out" class="text-button">Sign out</button><p id="hub-status" role="status"></p></div></article></section>
+      <section id="tab-settings" hidden><p class="eyebrow">MAKE YOURSELF AT HOME</p><h2>Settings</h2><div class="setting"><label for="parallax">Gentle planet movement</label><input id="parallax" type="checkbox" checked></div><p class="settings-note">A small movement that follows your mouse on the login screen.</p><p class="settings-note">Friends, profiles and presence are local until Astra’s shared service is connected.</p></section>
+    </div>
+  </section>
+  <dialog id="friend-dialog"><form id="friend-form"><button type="button" class="dialog-close" aria-label="Close dialog">×</button><p class="eyebrow">MAKE ROOM FOR SOMEONE</p><h2>Add a friend</h2><label>Minecraft username<input id="friend-name" maxlength="16" pattern="[A-Za-z0-9_]{3,16}" required autocomplete="off"></label><p class="quiet-note">Save a local contact. Requests and live status will work when Astra’s shared service is connected.</p><button class="primary">Save contact</button><p id="friend-error" role="status"></p></form></dialog>
+  <dialog id="contact-dialog"><button type="button" class="dialog-close" aria-label="Close profile">×</button><div class="contact-banner"><span class="contact-silhouette">?</span></div><h2 id="contact-name"></h2><p class="quiet-note">Local contact · status and skin unavailable</p><p>This profile will appear here when your friend joins Astra.</p><button id="remove-contact" class="text-button">Remove contact</button></dialog>
+  <footer><span class="version">0.7 PREVIEW</span></footer>
+  <script src="hub.bundle.js"></script><script src="app.js"></script><script type="module" src="planet.js"></script>
+</body>
+</html>
